@@ -51,7 +51,7 @@ bool MILOI2C::ping()
   return success;
 }
 
-void MILOI2C::sendLine(String line)
+void MILOI2C::sendLine(String& line)
 {
   //wireptr->beginTransmission(8);
 
@@ -89,4 +89,17 @@ String MILOI2C::readLine(uint8_t len)
 int MILOI2C::stuff()
 {
   return 100;
+}
+
+void MILOI2C::sendCommand(String& device,String& action)
+{
+  StaticJsonBuffer<200> jsonBuffer;
+  JsonObject& root = jsonBuffer.createObject();
+  root["device"] = device;
+  root["action"] = action;
+  // https://arduinojson.org/api/jsonobject/printto/
+  String command;
+  root.printTo(command);
+  // send the json encoded data to the client.
+  this->sendLine(command);
 }

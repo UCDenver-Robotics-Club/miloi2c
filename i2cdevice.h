@@ -21,10 +21,10 @@ public:
   MILOI2C(unsigned char address);
   //MILOI2C(uint8_t addr,TwoWire *ptr);
   bool ping(); // make sure the device is connected, may not be needed
-  void sendLine(String line); // sends a string to the client
+  void sendLine(String& line); // sends a string to the client
   String readLine(uint8_t len); // reads a line from the client
   int stuff(); // stuff...
-  void sendCommand(String device,String action); // send a json command to the client 
+  void sendCommand(String& device,String& action); // send a json command to the client 
 private:
   //void startI2c(); // not super nessary
   unsigned char address; // address of the i2c device
