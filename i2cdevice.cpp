@@ -1,6 +1,6 @@
 #include <i2cdevice.h>
-#include <Wire.h> // arduino's i2c libary
-#include <stdint.h>
+//#include <Wire.h> // arduino's i2c libary
+//#include <stdint.h>
 
 String MILOI2C::sayHi()
 {
@@ -20,12 +20,12 @@ MILOI2C::MILOI2C(unsigned char address)
   Wire.begin();
 }
 
-MILOI2C::MILOI2C(uint8_t addr,TwoWire *ptr)
-{
-  wireptr = ptr;
-  address = addr;
-  Wire.begin();
-}
+// MILOI2C::MILOI2C(uint8_t addr,TwoWire *ptr)
+// {
+//   wireptr = ptr;
+//   address = addr;
+//   Wire.begin();
+// }
 
 bool MILOI2C::ping()
 {
@@ -69,9 +69,21 @@ void MILOI2C::sendLine(String line)
   //wireptr->endTransmission();
 }
 
-String MILOI2C::readLine()
+String MILOI2C::readLine(uint8_t len)
 {
-  return "null";
+  //String out = NULL; // value of string is initally null
+  char buffer[len];
+  // request the bytes from the client
+  Wire.requestFrom(address,len);
+  uint8_t bufferIndex=0;
+
+  while(Wire.available())
+  {
+    buffer[bufferIndex] = Wire.read();
+    bufferIndex++;
+  }
+
+  return String(buffer); // return the char buffer as a string object
 }
 
 int MILOI2C::stuff()
