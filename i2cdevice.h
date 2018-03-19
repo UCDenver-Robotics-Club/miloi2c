@@ -34,6 +34,7 @@ private:
 class Ledblink : public MILOI2C
 {
 public:
+  Ledblink(unsigned char address) : MILOI2C(address) {}
   void on();
   void off();
 };
