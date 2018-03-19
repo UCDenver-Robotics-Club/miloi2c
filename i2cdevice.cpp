@@ -51,7 +51,7 @@ bool MILOI2C::ping()
   return success;
 }
 
-void MILOI2C::sendLine(String& line)
+void MILOI2C::sendLine(String line)
 {
   //wireptr->beginTransmission(8);
 
@@ -91,7 +91,7 @@ int MILOI2C::stuff()
   return 100;
 }
 
-void MILOI2C::sendCommand(String& device,String& action)
+void MILOI2C::sendCommand(String device,String action)
 {
   StaticJsonBuffer<200> jsonBuffer;
   JsonObject& root = jsonBuffer.createObject();
