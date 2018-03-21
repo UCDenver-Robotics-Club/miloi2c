@@ -39,10 +39,6 @@ public:
   void off();
 };
 
-class ColorDetector : public MILOI2C
-{
-
-};
 
 class CointSort : public MILOI2C
 {
