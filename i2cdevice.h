@@ -39,6 +39,13 @@ public:
   void off();
 };
 
+class I2cDisplay : public MILOI2C
+{
+public:
+  void println(const char *mesg); // print stuff to the display
+  void clear(); // clear 
+private:
+}
 
 class CoinSlot : public MILOI2C
 {
