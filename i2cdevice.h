@@ -40,8 +40,11 @@ public:
 };
 
 
-class CointSort : public MILOI2C
+class CoinSlot : public MILOI2C
 {
+public:
+
+private:
 
 };
 
