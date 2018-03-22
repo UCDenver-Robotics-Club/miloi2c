@@ -9,3 +9,13 @@ void Ledblink::off()
 {
   sendCommand("led","off");
 }
+
+void Ledblink::setActive()
+{
+
+}
+
+void Ledblink::clearActive()
+{
+  
+}

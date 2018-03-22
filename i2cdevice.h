@@ -35,17 +35,21 @@ class Ledblink : public MILOI2C
 {
 public:
   Ledblink(unsigned char address) : MILOI2C(address) {}
+  // steady on and stedy off
   void on();
   void off();
+  // active blinking
+  void setActive();
+  void clearActive();
 };
 
 class I2cDisplay : public MILOI2C
 {
 public:
   void println(const char *mesg); // print stuff to the display
-  void clear(); // clear 
+  void clear(); // clear
 private:
-}
+};
 
 class CoinSlot : public MILOI2C
 {
